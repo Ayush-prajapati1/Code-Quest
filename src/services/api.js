@@ -1,4 +1,9 @@
-const DEFAULT_API_URL = 'http://localhost:5000/api'
+const LOCAL_API_URL = 'http://localhost:5000/api'
+const PRODUCTION_API_URL = 'https://code-quest-u7vu.onrender.com/api'
+
+const DEFAULT_API_URL = import.meta.env.DEV
+  ? import.meta.env.VITE_API_URL || LOCAL_API_URL
+  : PRODUCTION_API_URL
 
 export const AUTH_TOKEN_STORAGE_KEY = 'codequest_auth_token'
 
@@ -7,7 +12,7 @@ function normalizeBaseUrl(value) {
   return (candidate || DEFAULT_API_URL).replace(/\/+$/, '')
 }
 
-export const API_BASE_URL = normalizeBaseUrl(import.meta.env.VITE_API_URL)
+export const API_BASE_URL = normalizeBaseUrl(DEFAULT_API_URL)
 
 function readStoredToken() {
   try {

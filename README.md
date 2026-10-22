@@ -10,13 +10,18 @@ CodeQuest is a coding RPG built with React, Vite, JavaScript, Node.js, Express, 
 
 ## Environment setup
 
-Create a frontend `.env` from the tracked example:
+The production frontend uses the deployed Render API configured in
+`src/services/api.js`. Netlify does not require a frontend environment variable.
+
+For local development, the frontend defaults to `http://localhost:5000/api`.
+Optionally create a frontend `.env` from the tracked example to override that
+local URL:
 
 ```powershell
 Copy-Item .env.example .env
 ```
 
-Frontend variable:
+Optional local-only frontend variable:
 
 ```dotenv
 VITE_API_URL=http://localhost:5000/api
